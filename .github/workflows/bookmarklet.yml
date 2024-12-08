@@ -1,0 +1,23 @@
+name: Generate bookmarklet
+on:
+  push:
+    branches:
+      - main
+jobs:
+  bookmarklet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          git config --global user.name "${{github.actor}}"
+          git config --global user.email  "${{github.actor_id}}+${{github.actor}}@users.noreply.github.com"
+          git switch --orphan dist
+          mv {dist/,}index.global.js
+          git add index.global.js
+          git commit -m "Initial commit"
+          git push -f origin dist
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
