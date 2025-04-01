@@ -7,9 +7,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.13.8",
-    "json-sort-cli": "^4.0.4",
-    "lefthook": "^1.11.2",
+    "@types/node": "^22.13.16",
+    "json-sort-cli": "^4.0.9",
+    "lefthook": "^1.11.6",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2"
   }
